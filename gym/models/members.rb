@@ -2,7 +2,8 @@ require_relative( '../db/sql_runner' )
 
 class Member
 
-  attr_accessor :name, :fitness_level
+  attr_accessor :f_name, :l_name, :premium, :fitness_level
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i

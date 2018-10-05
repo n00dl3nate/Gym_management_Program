@@ -9,7 +9,7 @@ CREATE TABLE  members
   f_name VARCHAR(255),
   l_name VARCHAR(255),
   premium BOOLEAN,
-  fitness_level INT2 
+  fitness_level INT2
 );
 
 CREATE TABLE  classes
@@ -24,7 +24,6 @@ CREATE TABLE timetables
   id SERIAL8 PRIMARY KEY,
   class_id INT8 REFERENCES classes(id) ON DELETE CASCADE,
   class_time TIME,
-  class_date DATE,
   capacity INT2
 );
 
