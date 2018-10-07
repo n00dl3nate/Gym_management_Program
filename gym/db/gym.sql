@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS timetables;
 DROP TABLE IF EXISTS members;
-DROP TABLE IF EXISTS classes;
+DROP TABLE IF EXISTS sessions;
 
 CREATE TABLE  members
 (
@@ -12,7 +12,7 @@ CREATE TABLE  members
   fitness_level INT2
 );
 
-CREATE TABLE  classes
+CREATE TABLE  sessions
 (
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255),
@@ -22,7 +22,7 @@ CREATE TABLE  classes
 CREATE TABLE timetables
 (
   id SERIAL8 PRIMARY KEY,
-  class_id INT8 REFERENCES classes(id) ON DELETE CASCADE,
+  session_id INT8 REFERENCES sessions(id) ON DELETE CASCADE,
   class_time TIME,
   capacity INT2
 );

@@ -26,4 +26,23 @@ class Booking
 
   end
 
+  def self.delete_all
+
+    sql = "DELETE FROM bookings;"
+
+    SqlRunner.run(sql)
+
+  end
+
+  def self.all
+
+    sql = "SELECT * FROM bookings"
+
+    all = SqlRunner.run(sql)
+
+    return all.map do |booking|
+      Booking.new(booking)
+    end
+  end
+
 end

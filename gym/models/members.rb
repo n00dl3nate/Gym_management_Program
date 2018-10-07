@@ -31,4 +31,51 @@ class Member
 
   end
 
+  def self.delete_all
+
+    sql = "DELETE FROM members;"
+
+    SqlRunner.run(sql)
+
+  end
+
+  def self.all
+
+    sql = "SELECT * FROM members"
+
+    all = SqlRunner.run(sql)
+
+    return all.map do |member|
+      Member.new(member)
+    end
+  end
+
+  def self.find(id)
+
+    sql = "SELECT * FROM members
+    WHERE id = $1"
+
+
+    member = SqlRunner.run(sql,[id])
+
+    return Member.new(member.first)
+
+  end
+
+  def self.delete_find(id)
+
+    sql = "DELETE FROM members
+    WHERE id = $1"
+
+    SqlRunner.run(sql,[id])
+
+  end
+
+  def self.amount
+
+    all = Member.all
+    return all.length
+
+  end 
+
 end

@@ -7,7 +7,7 @@ class Timetable
 
   def initialize(options)
     @id = options['id'].to_i
-    @class_id = options['class_id'].to_i
+    @session_id = options['session_id'].to_i
     @class_time = options['class_time']
     @capacity = options['capacity'].to_i
   end
@@ -15,7 +15,7 @@ class Timetable
   def save
 
     sql = "INSERT INTO timetables(
-    class_id,
+    session_id,
     class_time,
     capacity
     )
@@ -23,10 +23,30 @@ class Timetable
     RETURNING ID;
     "
 
-    values = [@class_id,@class_time,@capacity]
+    values = [@session_id,@class_time,@capacity]
 
     id = SqlRunner.run(sql,values)
     @id = id.first['id'].to_i
+
+  end
+
+  def self.delete_all
+
+    sql = "DELETE FROM timetables;"
+
+    SqlRunner.run(sql)
+
+  end
+
+  def self.all
+
+    sql = "SELECT * FROM timetables"
+
+    all = SqlRUnner.run(sql)
+
+    all.map do |schedule|
+      return Timetable.new(schedule)
+    end
 
   end
 

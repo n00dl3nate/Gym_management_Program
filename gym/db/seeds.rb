@@ -1,7 +1,16 @@
 require_relative('../models/members.rb')
-require_relative('../models/classes.rb')
+require_relative('../models/sessions.rb')
 require_relative('../models/timetable.rb')
 require_relative('../models/booking.rb')
+require("pry")
+
+
+Member.delete_all
+Session.delete_all
+Booking.delete_all
+Timetable.delete_all
+
+
 member1 = Member.new(
   "f_name" => "Jack",
   "l_name" => "Jackson",
@@ -35,51 +44,51 @@ member2.save
 member3.save
 member4.save
 
-class1 = Class.new(
+session1 = Session.new(
   "name" => "Spin",
   "fitness_level" => 1
 )
 
-class2 = Class.new(
+session2 = Session.new(
   "name" => "Crossfit",
   "fitness_level" => 1
 )
 
-class3 = Class.new(
+session3 = Session.new(
   "name" => "Les Mills Body Weigth",
   "fitness_level" => 1
 )
 
-class4 = Class.new(
+session4 = Session.new(
   "name" => "Kickboxing",
   "fitness_level" => 1
 )
 
-class1.save
-class2.save
-class3.save
-class4.save
+session1.save
+session2.save
+session3.save
+session4.save
 
 timetable1 = Timetable.new(
-  "class_id" => class1.id,
+  "session_id" => session1.id,
   "class_time" => "13:00",
   "capacity" => 20
 )
 
 timetable2 = Timetable.new(
-  "class_id" => class2.id,
+  "session_id" => session2.id,
   "class_time" => "15:00",
   "capacity" => 10
 )
 
 timetable3 = Timetable.new(
-  "class_id" => class3.id,
+  "session_id" => session3.id,
   "class_time" => "17:00",
   "capacity" => 15
 )
 
 timetable4 = Timetable.new(
-  "class_id" => class4.id,
+  "session_id" => session4.id,
   "class_time" => "20:00",
   "capacity" => 30
 )
@@ -125,3 +134,7 @@ booking3.save
 booking4.save
 booking5.save
 booking6.save
+
+
+binding.pry
+nil
