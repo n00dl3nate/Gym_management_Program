@@ -71,25 +71,25 @@ session4.save
 
 timetable1 = Timetable.new(
   "session_id" => session1.id,
-  "class_time" => "13:00",
+  "session_time" => "13:00",
   "capacity" => 20
 )
 
 timetable2 = Timetable.new(
   "session_id" => session2.id,
-  "class_time" => "15:00",
+  "session_time" => "15:00",
   "capacity" => 10
 )
 
 timetable3 = Timetable.new(
   "session_id" => session3.id,
-  "class_time" => "17:00",
+  "session_time" => "17:00",
   "capacity" => 15
 )
 
 timetable4 = Timetable.new(
   "session_id" => session4.id,
-  "class_time" => "20:00",
+  "session_time" => "20:00",
   "capacity" => 30
 )
 

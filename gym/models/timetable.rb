@@ -8,7 +8,7 @@ class Timetable
   def initialize(options)
     @id = options['id'].to_i
     @session_id = options['session_id'].to_i
-    @class_time = options['class_time']
+    @session_time = options['session_time']
     @capacity = options['capacity'].to_i
   end
 
@@ -16,14 +16,14 @@ class Timetable
 
     sql = "INSERT INTO timetables(
     session_id,
-    class_time,
+    session_time,
     capacity
     )
     VALUES($1,$2,$3)
     RETURNING ID;
     "
 
-    values = [@session_id,@class_time,@capacity]
+    values = [@session_id,@session_time,@capacity]
 
     id = SqlRunner.run(sql,values)
     @id = id.first['id'].to_i
@@ -48,6 +48,40 @@ class Timetable
       return Timetable.new(schedule)
     end
 
+  end
+
+  def attendance
+
+    sql =  "SELECT members.* FROM members
+    INNER JOIN bookings
+    ON bookings.member_id = members.id
+    INNER JOIN timetables
+    ON bookings.timetable_id = timetables.id
+    WHERE timetables.id = $1
+    "
+
+    members = SqlRunner.run(sql,[@id])
+
+    list = members.map do |mem|
+      Member.new(mem)
+    end
+    return list
+
+  end
+
+  def update()
+    sql = "UPDATE timetables
+    SET
+    (
+      session_time,
+      capacity
+    ) 
+    (
+      $1, $2
+    )
+    WHERE id = $3"
+    values = [@session_time,@capacity,@id]
+    SqlRunner.run( sql, values )
   end
 
 end

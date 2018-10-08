@@ -62,12 +62,12 @@ class Member
 
   end
 
-  def self.delete_find(id)
+  def delete()
 
     sql = "DELETE FROM members
     WHERE id = $1"
 
-    SqlRunner.run(sql,[id])
+    SqlRunner.run(sql,[@id])
 
   end
 
@@ -76,6 +76,25 @@ class Member
     all = Member.all
     return all.length
 
-  end 
+  end
+
+  def self.show_bookings(id)
+
+    sql = "SELECT bookings.id ,sessions.name, sessions.fitness_level , timetables.session_time FROM sessions
+    INNER JOIN timetables
+    ON timetables.session_id = sessions.id
+    INNER JOIN bookings
+    ON bookings.timetable_id = timetables.id
+    INNER JOIN members
+    ON members.id = bookings.member_id
+    WHERE members.id = $1"
+
+    booked = SqlRunner.run(sql,[id])
+    all = []
+    booked.each do |session|
+      all << session
+    end
+    return all
+  end
 
 end

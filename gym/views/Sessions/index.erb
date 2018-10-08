@@ -1,0 +1,18 @@
+<h1> all Classes </h1>
+
+<div class = "Sessions">
+    <a href="/sessions/new"><li>Add New Class</li></a>
+<table>
+  <tr>
+    <td>Name</td>
+
+    <td>Fitness Level</td>
+  </tr>
+    <% for session in @sessions%>
+    <tr>
+      <td><%= session.name %></td>
+
+      <td><%= session.fitness_level %></td>
+      </td>
+    </tr>
+  <% end %>

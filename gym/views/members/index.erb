@@ -1,0 +1,23 @@
+<h1>Members</h1>
+
+
+<div class = "members">
+    <a href="/members/new"><li>Add Member</li></a>
+<table>
+  <tr>
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Premium</td>
+    <td>Fitness Level</td>
+    <td>View</td>
+  </tr>
+    <% for member in @members%>
+    <tr>
+      <td><%= member.f_name %></td>
+      <td><%= member.l_name %></td>
+      <td><%= member.premium %></td>
+      <td><%= member.fitness_level %></td>
+      <td><a href="/members/<%= member.id %>">View Details</a></td>
+      </td>
+    </tr>
+  <% end %>

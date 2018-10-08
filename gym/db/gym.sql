@@ -23,7 +23,7 @@ CREATE TABLE timetables
 (
   id SERIAL8 PRIMARY KEY,
   session_id INT8 REFERENCES sessions(id) ON DELETE CASCADE,
-  class_time TIME,
+  session_time TIME,
   capacity INT2
 );
 

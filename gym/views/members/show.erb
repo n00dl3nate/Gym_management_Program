@@ -1,0 +1,33 @@
+<p>Member <%= @member.id %><hr></p>
+
+<p>First Name:<%= @member.f_name %> </p>
+<p>Last Name:<%= @member.l_name %> </p>
+<p>Premium:<%= @member.premium%> </p>
+<p>Fitness Level:<%= @member.fitness_level %> </p>
+<form action="/members/<%= @member.id %>/delete" method="post">
+    <input class="interact interact-delete" type="submit" value="Delete">
+</form>
+
+<hr></p>
+<h3>Bookings</h3>
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Time</td>
+      <td>Fitness Level</td>
+      <td>Delete</td>
+    </tr>
+      <% for booking in @bookings%>
+    <tr>
+      <td><%= booking['name'] %></td>
+      <td><%= booking['session_time'] %></td>
+      <td><%= booking['fitness_level'] %></td>
+      <td>
+      <form action="/bookings/<%= booking['id'] %>/delete" method="post">
+          <input class="interact interact-delete" type="submit" value="Delete">
+      </form>
+      <td>
+
+    </tr>
+    <% end %>
+  </table>
