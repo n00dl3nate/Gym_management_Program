@@ -26,6 +26,21 @@ class Booking
 
   end
 
+  def update()
+    sql = "UPDATE bookings
+    SET
+    (
+      member_id,
+      timetable_id
+    ) =
+    (
+      $1, $2
+    )
+    WHERE id = $3"
+    values = [@member_id,@timetable_id]
+    SqlRunner.run( sql, values )
+  end
+
   def self.delete_all
 
     sql = "DELETE FROM bookings;"

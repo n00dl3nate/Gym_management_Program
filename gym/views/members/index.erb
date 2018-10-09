@@ -10,6 +10,7 @@
     <td>Premium</td>
     <td>Fitness Level</td>
     <td>View</td>
+    <td>Edit</td>
   </tr>
     <% for member in @members%>
     <tr>
@@ -18,6 +19,9 @@
       <td><%= member.premium %></td>
       <td><%= member.fitness_level %></td>
       <td><a href="/members/<%= member.id %>">View Details</a></td>
+      <td><form action="/members/<%= member.id %>/update" method="post">
+        <input class="interact" type="submit" value="Update">
+      </form>
       </td>
     </tr>
   <% end %>

@@ -27,6 +27,21 @@ class Session
 
   end
 
+  def update()
+    sql = "UPDATE members
+    SET
+    (
+      name,
+      fitness_level
+    ) =
+    (
+      $1, $2
+    )
+    WHERE id = $3"
+    values = [@name,@fitness_level]
+    SqlRunner.run( sql, values )
+  end
+
   def self.delete_all
 
     sql = "DELETE FROM sessions;"
@@ -45,5 +60,23 @@ class Session
       Session.new(sesh)
     end
   end
+
+  def self.times(id)
+
+    sql = "SELECT timetables.session_time FROM sessions
+    INNER JOIN timetables
+    ON timetables.session_id = sessions.id
+    WHERE sessions.id = $1
+    "
+
+    class_times = SqlRunner.run(sql,[id])
+
+    all = []
+    class_times.each do |session|
+      all << session
+    end
+    return all
+  end
+
 
 end

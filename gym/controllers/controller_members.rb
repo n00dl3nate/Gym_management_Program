@@ -34,6 +34,26 @@ end
 post '/members/:id/delete' do
   id = params[:id].to_i
   member = Member.find(id)
-  member.delete_find()
+  member.delete()
+  redirect to("/members")
+end
+
+get '/members/:id/new_booking' do
+  id = params[:id].to_i
+  @member = Member.find(id)
+  @timetables = Timetable.show_class_times
+
+  erb(:"bookings/new")
+end
+
+post '/members/:id/update' do
+  @updated_member = member.find(params[:id])
+  erb(:update)
+end
+
+post '/members/:id/change' do
+  updated_pizza = Member.new(params)
+  updated_pizza.update()
+  @members = Member.all()
   redirect to("/members")
 end

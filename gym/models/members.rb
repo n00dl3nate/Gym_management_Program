@@ -31,6 +31,25 @@ class Member
 
   end
 
+  def update()
+    sql = "UPDATE members
+    SET
+    (
+      f_name,
+      l_name,
+      premium,
+      fitness_level
+    ) =
+    (
+      $1, $2, $3, $4
+    )
+    WHERE id = $5"
+    values = [@f_name,@l_name,@premium,@fitness_level]
+    SqlRunner.run( sql, values )
+  end
+
+
+
   def self.delete_all
 
     sql = "DELETE FROM members;"

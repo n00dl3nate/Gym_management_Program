@@ -30,6 +30,22 @@ class Timetable
 
   end
 
+  def update()
+    sql = "UPDATE members
+    SET
+    (
+      session_id,
+      session_time,
+      capacity
+    ) =
+    (
+      $1, $2 , $3
+    )
+    WHERE id = $4"
+    values = [@session_id,@session_time,@capacity]
+    SqlRunner.run( sql, values )
+  end
+
   def self.delete_all
 
     sql = "DELETE FROM timetables;"
@@ -75,13 +91,28 @@ class Timetable
     (
       session_time,
       capacity
-    ) 
+    )
     (
       $1, $2
     )
     WHERE id = $3"
     values = [@session_time,@capacity,@id]
     SqlRunner.run( sql, values )
+  end
+
+  def self.show_class_times
+
+    sql = "SELECT timetables.*, sessions.name FROM sessions
+    INNER JOIN timetables
+    ON timetables.session_id = sessions.id
+    Order by timetables.session_time"
+
+    results = SqlRunner.run(sql)
+    all = []
+    results.each do |item|
+      all << item
+    end
+    return all
   end
 
 end
