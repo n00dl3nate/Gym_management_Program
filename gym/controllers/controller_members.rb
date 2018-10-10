@@ -42,18 +42,18 @@ get '/members/:id/new_booking' do
   id = params[:id].to_i
   @member = Member.find(id)
   @timetables = Timetable.show_class_times
-
+  @bookings = Member.show_bookings(id)
   erb(:"bookings/new")
 end
 
 post '/members/:id/update' do
-  @updated_member = member.find(params[:id])
-  erb(:update)
+  @member = Member.find(params[:id].to_i)
+  erb(:"members/update")
 end
 
 post '/members/:id/change' do
-  updated_pizza = Member.new(params)
-  updated_pizza.update()
+  updated_member = Member.new(params)
+  updated_member.update()
   @members = Member.all()
   redirect to("/members")
 end

@@ -24,7 +24,7 @@ class Member
     VALUES($1,$2,$3,$4)
     RETURNING ID;"
 
-    values = [@f_name,@l_name,@premium,@fitness_level]
+    values = [@f_name.capitalize,@l_name.capitalize,@premium,@fitness_level]
 
     id = SqlRunner.run(sql,values)
     @id = id.first['id'].to_i
@@ -44,7 +44,7 @@ class Member
       $1, $2, $3, $4
     )
     WHERE id = $5"
-    values = [@f_name,@l_name,@premium,@fitness_level]
+    values = [@f_name,@l_name,@premium,@fitness_level, @id]
     SqlRunner.run( sql, values )
   end
 
@@ -99,7 +99,8 @@ class Member
 
   def self.show_bookings(id)
 
-    sql = "SELECT bookings.id ,sessions.name, sessions.fitness_level , timetables.session_time FROM sessions
+    sql = "SELECT bookings.id ,sessions.name, sessions.fitness_level ,
+    timetables.session_time , timetables.id as t_id FROM sessions
     INNER JOIN timetables
     ON timetables.session_id = sessions.id
     INNER JOIN bookings

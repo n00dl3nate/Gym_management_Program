@@ -37,7 +37,7 @@ class Booking
       $1, $2
     )
     WHERE id = $3"
-    values = [@member_id,@timetable_id]
+    values = [@member_id,@timetable_id,@id]
     SqlRunner.run( sql, values )
   end
 
@@ -89,5 +89,6 @@ class Booking
     SqlRunner.run(sql,[id])
 
   end
+
 
 end

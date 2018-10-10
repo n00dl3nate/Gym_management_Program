@@ -6,19 +6,21 @@
 
 <table>
   <tr>
-    <td>Name</td>
-    <td>Time</td>
-    <td>Spaces Left</td>
-    <td>id</td>
-    <td>select</td>
+    <th>Name</th>
+    <th>Time</th>
+    <th>Spaces Left</th>
+    <th></th>
   </tr>
     <% for session in @timetables%>
+
+
     <tr>
       <td><%= session['name'] %></td>
       <td><%= session['session_time'] %></td>
       <td><%= session['capacity'] %></td>
-      <td><%= session['id'] %></td>
-      <td><a href="/bookings/<%= @member.id %>/ <%= session['id']%>">View Details</a></td>
+      <td><form action="/bookings/<%= @member.id %>/<%= session['id']%> " method="post">
+          <input class="interact interact-delete" type="submit" value="Add">
+      </form></td>
       <% end %>
     </tr>
 </table>

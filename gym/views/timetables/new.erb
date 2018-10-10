@@ -1,0 +1,19 @@
+<h1> Adding New class Time </h1>
+
+<form class="" action="/timetables" method="POST">
+
+  Select a Class
+      <select name="session_id">
+        <% for session in @sessions %>
+        <option value="<%= session.id %>"><%= session.name %></option>
+        <% end %>
+      </select>
+    </label>
+
+  <label for = "session_time">Time</label>
+    <input required id="session_time" type="time" name="session_time" placeholder="time"/>
+  <label for = "capacity">capacity</label>
+  <input type="number" name="capacity" placeholder="capacity" min="1" max="30"/>
+
+  <input type="submit" value="Add">
+</form>

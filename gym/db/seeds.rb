@@ -71,25 +71,25 @@ session4.save
 
 timetable1 = Timetable.new(
   "session_id" => session1.id,
-  "session_time" => "13:00",
+  "session_time" => "01:00:PM",
   "capacity" => 20
 )
 
 timetable2 = Timetable.new(
   "session_id" => session2.id,
-  "session_time" => "15:00",
+  "session_time" => "03:00:PM",
   "capacity" => 10
 )
 
 timetable3 = Timetable.new(
   "session_id" => session3.id,
-  "session_time" => "17:00",
+  "session_time" => "05:00:PM",
   "capacity" => 15
 )
 
 timetable4 = Timetable.new(
   "session_id" => session4.id,
-  "session_time" => "20:00",
+  "session_time" => "09:00:PM",
   "capacity" => 30
 )
 
@@ -135,6 +135,15 @@ booking4.save
 booking5.save
 booking6.save
 
+timetable1.capacity = 19
+timetable2.capacity = 9
+timetable3.capacity = 13
+timetable4.capacity = 28
+
+timetable1.update
+timetable2.update
+timetable3.update
+timetable4.update
 
 binding.pry
 nil

@@ -42,7 +42,7 @@ class Timetable
       $1, $2 , $3
     )
     WHERE id = $4"
-    values = [@session_id,@session_time,@capacity]
+    values = [@session_id,@session_time,@capacity,@id]
     SqlRunner.run( sql, values )
   end
 
@@ -58,10 +58,10 @@ class Timetable
 
     sql = "SELECT * FROM timetables"
 
-    all = SqlRUnner.run(sql)
+    all = SqlRunner.run(sql)
 
     all.map do |schedule|
-      return Timetable.new(schedule)
+       Timetable.new(schedule)
     end
 
   end
@@ -89,14 +89,15 @@ class Timetable
     sql = "UPDATE timetables
     SET
     (
+      session_id,
       session_time,
       capacity
-    )
+    ) =
     (
-      $1, $2
+      $1, $2, $3
     )
-    WHERE id = $3"
-    values = [@session_time,@capacity,@id]
+    WHERE id = $4"
+    values = [@session_id,@session_time,@capacity,@id]
     SqlRunner.run( sql, values )
   end
 
@@ -113,6 +114,44 @@ class Timetable
       all << item
     end
     return all
+  end
+
+
+  def self.find(id)
+
+    sql = "SELECT * FROM timetables
+    WHERE id = $1"
+
+    timetable = SqlRunner.run(sql,[id])
+
+    return Timetable.new(timetable.first)
+
+  end
+
+  def self.delete(id)
+
+    sql = "DELETE FROM timetables
+    WHERE id = $1"
+
+    SqlRunner.run(sql,[id])
+
+  end
+
+  def subtract()
+    @capacity -= 1
+    update()
+  end
+
+  def self.subtract(id)
+    timetable = Timetable.find(id)
+    timetable.capacity -= 1
+    timetable.update
+  end
+
+  def self.add(id)
+    timetable = Timetable.find(id)
+    timetable.capacity += 1
+    timetable.update
   end
 
 end

@@ -1,10 +1,10 @@
-<form class="" action="/members/<%= @members.id %>/change" method="POST">
+<form class="" action="/members/<%= @member.id %>/change" method="POST">
 
   <label for = "first-name">First Name</lable>
-    <input required id="first-name" type="text" name="f_name" placeholder="First Name"/>
+    <input required id="first-name" type="text" name="f_name" placeholder= <%= @member.f_name %> />
 
   <label for = "last-name">Last Name</label>
-    <input required id="last-name" type="text" name="l_name" placeholder="Last Name"/>
+    <input required id="last-name" type="text" name="l_name" placeholder= <%= @member.l_name  %> />
 
   <label for = "premium">Premium</label>
     <select id="premium" name="premium">
@@ -13,7 +13,7 @@
     </select>
 
   <label for = "fitness-level">Fitness Level</label>
-    <select id="fitness-level" name="fitness_level">
+    <select id="fitness-level" name="fitness_level" >
       <option value="1">Low</option>
       <option value="2">Medium</option>
       <option value="3">High</option>

@@ -22,18 +22,21 @@ end
 
 post ('/bookings/:id/delete') do
   id = params[:id].to_i
+  booking = Booking.find(id)
+  t_id = booking.timetable_id.to_i
+  Timetable.add(t_id)
   Booking.delete_find(id)
   redirect to('/members')
 end
 
-
-post '/booking/:id/:timetable_id' do
-  id = params[:id].to_i
-  timetable_id = params[:timetable_id].to_i
+post ('/bookings/:id/:timetable_id') do
+  id = params[:id]
+  timetable_id = params[:timetable_id]
   booking_new = Booking.new(
     "member_id" => id,
     "timetable_id" => timetable_id
   )
+  Timetable.subtract(timetable_id)
   booking_new.save
   redirect to('/members')
 end

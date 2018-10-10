@@ -38,7 +38,7 @@ class Session
       $1, $2
     )
     WHERE id = $3"
-    values = [@name,@fitness_level]
+    values = [@name,@fitness_level,@id]
     SqlRunner.run( sql, values )
   end
 
@@ -77,6 +77,21 @@ class Session
     end
     return all
   end
+
+  def self.find(id)
+
+    sql = "SELECT * FROM sessions
+    WHERE id = $1"
+
+
+    session = SqlRunner.run(sql,[id])
+
+    return Session.new(session.first)
+
+  end
+
+  
+
 
 
 end

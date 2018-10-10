@@ -1,0 +1,170 @@
+
+
+html {
+  line-height: 1.4;
+  font-weight: 400;
+  font-family: sans-serif;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+  background-color: grey;
+	background-image: url("/Images/backgrounds/gym2.jpg"); 
+	font-family: 'Raleway', sans-serif;
+	font-size: 11pt;
+	font-weight: 400;
+	color: #363636;
+}
+
+
+header {
+  color: white;
+  padding: 0.5em;
+  background:grey;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header nav {
+  display: block;
+  overflow: hidden;
+  text-align: left;
+}
+
+header nav a {
+  color: black;
+  font-weight: 600;
+  text-transform: lowercase;
+  width: 25%;
+  float: left;
+}
+
+header div {
+  padding: 0.5em;
+  background: dodgerblue;
+  image-orientation: left
+}
+
+
+.topnav a:link, a:visited {
+    background-color: black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.view a:link {
+    background-color: black ;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.topnav a:hover, a:active {
+    background-color: grey;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 .5em 0;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-size: 140%;
+  font-weight: 400;
+  color: dodgerblue;
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: .75em;
+}
+
+ul.style1
+{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.style1 li
+{
+  border-top: solid 1px #E5E5E5;
+  padding: 0.80em 0;
+}
+
+ul.style1 li:first-child
+{
+  border-top: 0;
+  padding-top: 0;
+}
+
+ul.style2
+{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.style2 li
+{
+  border-top: solid 1px #E5E5E5;
+  padding: 0.80em 0;
+}
+
+ul.style2 li:first-child
+{
+  border-top: 0;
+  padding-top: 0;
+}
+
+
+main {
+  background: aliceblue;
+  padding-bottom: 1.5em;
+}
+
+main section,
+main aside {
+  padding: 1.5em;
+  padding-bottom: 0;
+}
+
+main article {
+  padding: 1.5em;
+  background: white;
+  border-radius: 3px;
+}
+
+main article p {
+  color: grey;
+  line-height: 1.5;
+}
+
+
+footer {
+  color: white;
+  padding: 2em;
+  text-align: center;
+}
+
+
+hr {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    color: black;
+}

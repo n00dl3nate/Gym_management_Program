@@ -1,11 +1,15 @@
 <p>Member <%= @member.id %><hr></p>
-
-<p>First Name:<%= @member.f_name %> </p>
-<p>Last Name:<%= @member.l_name %> </p>
-<p>Premium:<%= @member.premium%> </p>
-<p>Fitness Level:<%= @member.fitness_level %> </p>
+<h3> Member Details </h3>
+<p>First Name: <%= @member.f_name %> </p>
+<p>Last Name: <%= @member.l_name %> </p>
+<p>Premium: <%= @member.premium%> </p>
+<p>Fitness Level: <%= @member.fitness_level %> </p>
+<hr>
 <form action="/members/<%= @member.id %>/delete" method="post">
     <input class="interact interact-delete" type="submit" value="Delete">
+</form>
+<form action="/members/<%= @member.id %>/update" method="post">
+    <input class="interact" type="submit" value="Edit">
 </form>
 
 <hr></p>
@@ -13,10 +17,10 @@
 <a href="/members/<%= @member.id %>/new_booking"><li>Add Booking</li></a>
   <table>
     <tr>
-      <td>Name</td>
-      <td>Time</td>
-      <td>Fitness Level</td>
-      <td>Delete</td>
+      <th>Name</th>
+      <th>Time</th>
+      <th>Fitness Level</th>
+      <th>Delete</th>
     </tr>
       <% for booking in @bookings%>
     <tr>
@@ -27,8 +31,8 @@
       <form action="/bookings/<%= booking['id'] %>/delete" method="post">
           <input class="interact interact-delete" type="submit" value="Delete">
       </form>
-      <td>
+    </td>
 
-    </tr>
+  </tr>
     <% end %>
   </table>

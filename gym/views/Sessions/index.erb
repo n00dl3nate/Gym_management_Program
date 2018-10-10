@@ -1,18 +1,24 @@
-<h1> all Classes </h1>
+<h1> All Gym Sessions </h1>
 
 <div class = "Sessions">
     <a href="/sessions/new"><li>Add New Class</li></a>
 <table>
   <tr>
-    <td>Name</td>
+    <th>Name</th>
 
-    <td>Fitness Level</td>
+    <th>Fitness Level</th>
+
+
   </tr>
     <% for session in @sessions%>
     <tr>
       <td><%= session.name %></td>
 
       <td><%= session.fitness_level %></td>
+
+
+
       </td>
     </tr>
-  <% end %>
+    <% end %>
+</table>
