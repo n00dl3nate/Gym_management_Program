@@ -3,25 +3,27 @@ require_relative( '../db/sql_runner' )
 
 class Session
 
-  attr_accessor :name, :fitness_level
+  attr_accessor :name, :fitness_level, :premium
   attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
     @fitness_level = options['fitness_level'].to_i
+    @premium = options['premium']
   end
 
   def save
 
     sql = "INSERT INTO sessions
     (name,
-    fitness_level
+    fitness_level,
+    premium
     )
-    VALUES($1,$2)
+    VALUES($1,$2,$3)
     RETURNING ID;"
 
-    values = [@name,@fitness_level]
+    values = [@name,@fitness_level,@premium]
     id = SqlRunner.run(sql,values)
     @id = id.first['id'].to_i
 
@@ -35,10 +37,10 @@ class Session
       fitness_level
     ) =
     (
-      $1, $2
+      $1, $2 , $3
     )
-    WHERE id = $3"
-    values = [@name,@fitness_level,@id]
+    WHERE id = $4"
+    values = [@name,@fitness_level,@premium,@id]
     SqlRunner.run( sql, values )
   end
 
@@ -90,7 +92,7 @@ class Session
 
   end
 
-  
+
 
 
 

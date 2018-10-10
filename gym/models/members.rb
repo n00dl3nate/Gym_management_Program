@@ -117,17 +117,21 @@ class Member
     return all
   end
 
-  # def self.search_by_name(search)
-  #
-  #   sql = "Select members.* from members
-  #   WHERE f_name LIKE '%  %'"
-  #
-  #
-  #   all = SqlRunner.run(sql)
-  #
-  #   return all.map do |member|
-  #     Member.new(member)
-  #   end
-  # end
+  def self.search_by_name(name)
+
+    members = Member.all
+    searched = []
+    members.each do |mem|
+      if mem.f_name.to_s.downcase.include?(name.to_s) == true || mem.l_name.to_s.downcase.include?(name.to_s)
+        searched << mem
+      end
+    end
+    return searched
+    
+  end
+
+
+
+
 
 end

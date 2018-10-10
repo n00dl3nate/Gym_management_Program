@@ -1,1 +1,57 @@
-<h1> Search <h1>
+<h1> search <h1>
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <style>
+  input[type=text] {
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+  }
+  </style>
+  </head>
+  <body>
+
+  <p>Name Search For Member </p>
+    <form action="/members/search/name" method="get">
+    <input type="text" name='name' placeholder="ENTER THE NAME">
+  </form>
+
+  </body>
+  </html>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Premium</th>
+      <th>Fitness Level</th>
+      <th>View</th>
+
+    </tr>
+      <% for member in @members%>
+      <tr>
+        <td><%= member.f_name %></td>
+        <td><%= member.l_name %></td>
+        <%  premium = 'No'          %>
+        <% if member.premium == 't' %>
+        <%   premium = 'Yes'        %>
+        <%end  %>
+        <td> <%= premium %></td>
+
+        <td><%= member.fitness_level %></td>
+        <td>
+        <form action="/members/<%= member.id %>" method="get">
+          <input type="submit" value="Select">
+        </form>
+        </td>
+      </tr>
+    <% end %>
+  </table>

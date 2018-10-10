@@ -20,8 +20,19 @@
     <tr>
       <td><%= member.f_name %></td>
       <td><%= member.l_name %></td>
-      <td><%= member.premium %></td>
-      <td><%= member.fitness_level %></td>
+      <%  premium = 'No'          %>
+      <% if member.premium == 't' %>
+      <%   premium = 'Yes'        %>
+      <%end  %>
+      <td> <%= premium %></td>
+          <%level = "Low" %>
+          <%if member.fitness_level == 2 %>
+          <%level = "Medium" %>
+          <%end %>
+          <%if member.fitness_level == 3 %>
+          <%level = "High" %>
+          <%end %>
+      <td><%= level %></td>
       <td>
       <form action="/members/<%= member.id %>" method="get">
         <input type="submit" value="Select">

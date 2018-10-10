@@ -14,6 +14,18 @@ get '/members' do
   erb (:"members/index")
 end
 
+get '/members/search' do
+  @members = Member.all()
+  erb(:"members/search")
+end
+
+get '/members/search/:name' do
+  search = params[:name].to_s
+  @members = Member.all()
+  @member = Member.search_by_name(search)
+  erb(:"members/results")
+end
+
 get '/members/new' do
   erb(:"members/new")
 end

@@ -10,17 +10,27 @@
 
     <th>Fitness Level</th>
 
+    <th>premium<th>
+
 
   </tr>
     <% for session in @sessions%>
     <tr>
       <td><%= session.name %></td>
+      <%level = "Low" %>
+      <%if session.fitness_level == 2 %>
+      <%level = "Medium" %>
+      <%end %>
+      <%if session.fitness_level == 3 %>
+      <%level = "High" %>
+      <%end %>
+      <td><%= level %></td>
 
-      <td><%= session.fitness_level %></td>
-
-
-
-      </td>
+      <%  premium = 'No'          %>
+      <% if session.premium == 't' %>
+      <%   premium = 'Yes'        %>
+      <%end  %>
+      <td> <%= premium %></td>
     </tr>
     <% end %>
 </table>

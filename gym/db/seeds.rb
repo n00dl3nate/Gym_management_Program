@@ -46,22 +46,26 @@ member4.save
 
 session1 = Session.new(
   "name" => "Spin",
-  "fitness_level" => 1
+  "fitness_level" => 1,
+  "premium" => false
 )
 
 session2 = Session.new(
   "name" => "Crossfit",
-  "fitness_level" => 1
+  "fitness_level" => 1,
+  "premium" => true
 )
 
 session3 = Session.new(
   "name" => "Les Mills Body Weigth",
-  "fitness_level" => 1
+  "fitness_level" => 1,
+  "premium" => true
 )
 
 session4 = Session.new(
   "name" => "Kickboxing",
-  "fitness_level" => 1
+  "fitness_level" => 1,
+  "premium" => false
 )
 
 session1.save

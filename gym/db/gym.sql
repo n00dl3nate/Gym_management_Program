@@ -16,7 +16,8 @@ CREATE TABLE  sessions
 (
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255),
-  fitness_level INT2
+  fitness_level INT2,
+  premium BOOLEAN
 );
 
 CREATE TABLE timetables

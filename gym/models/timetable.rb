@@ -82,7 +82,7 @@ class Timetable
       array << mem
 
     end
-    return array 
+    return array
 
   end
   #
@@ -118,7 +118,7 @@ class Timetable
 
   def self.show_class_times
 
-    sql = "SELECT timetables.*, sessions.name FROM sessions
+    sql = "SELECT timetables.*, sessions.name, sessions.premium FROM sessions
     INNER JOIN timetables
     ON timetables.session_id = sessions.id
     Order by timetables.session_time"
@@ -168,5 +168,7 @@ class Timetable
     timetable.capacity += 1
     timetable.update
   end
+
+
 
 end
