@@ -2,8 +2,8 @@ require_relative( '../db/sql_runner' )
 
 class Timetable
 
-  attr_reader :id , :class_id
-  attr_accessor :class_time , :capacity
+  attr_reader :id , :session_id
+  attr_accessor :session_time , :capacity
 
   def initialize(options)
     @id = options['id'].to_i
@@ -66,9 +66,9 @@ class Timetable
 
   end
 
-  def attendance
+  def self.attendance(id)
 
-    sql =  "SELECT members.* FROM members
+    sql =  "SELECT members.* , bookings.id as booking_id FROM members
     INNER JOIN bookings
     ON bookings.member_id = members.id
     INNER JOIN timetables
@@ -76,14 +76,29 @@ class Timetable
     WHERE timetables.id = $1
     "
 
-    members = SqlRunner.run(sql,[@id])
-
+    members = SqlRunner.run(sql,[id])
+    array = []
     list = members.map do |mem|
-      Member.new(mem)
+      array << mem
+
     end
-    return list
+    return array 
 
   end
+  #
+  # def self.people_booked(id)
+  #
+  #   sql = "Select members.* from members
+  #   INNER JOIN bookings
+  #   on members.id = bookings.member_id
+  #   INNER JOIN timetables
+  #   ON bookings.timetable_id = timetables.id
+  #   WHERE timetables.id = $1"
+  #
+  #   members = SqlRunner.run(sql,[id])
+  #
+  #   list = members.map do |mem|
+  #
 
   def update()
     sql = "UPDATE timetables

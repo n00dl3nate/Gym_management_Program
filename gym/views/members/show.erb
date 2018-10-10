@@ -14,7 +14,9 @@
 
 <hr></p>
 <h3>Bookings</h3>
-<a href="/members/<%= @member.id %>/new_booking"><li>Add Booking</li></a>
+<form action="/members/<%= @member.id %>/new_booking" method="get">
+    <input type="submit" value="ADD BOOKING">
+</form>
   <table>
     <tr>
       <th>Name</th>
@@ -28,7 +30,7 @@
       <td><%= booking['session_time'] %></td>
       <td><%= booking['fitness_level'] %></td>
       <td>
-      <form action="/bookings/<%= booking['id'] %>/delete" method="post">
+      <form action="/bookings/<%=booking['id'] %>/delete" method="post">
           <input class="interact interact-delete" type="submit" value="Delete">
       </form>
     </td>

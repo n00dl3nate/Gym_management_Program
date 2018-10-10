@@ -1,11 +1,15 @@
 <h1>Timetables</h1>
-<a href="/timetables/new"><li>Add New Time For Class</li></a>
+
+<form action="/timetables/new" method="get">
+    <input type="submit" value="ADD NEW TIME FOR CLASS ">
+</form>
   <table>
     <tr>
       <th>Name</th>
       <th>Time</th>
       <th>Spaces Left</th>
       <th>Delete</th>
+      <th>Select</th>
     </tr>
       <% for session in @timetables%>
       <tr>
@@ -16,6 +20,11 @@
           <form action="/timetables/<%= session['id'] %>/delete" method="post">
             <input class="interact interact-delete" type="submit" value="Delete">
           </form>
+        </td>
+        <td>
+        <form action="/timetables/<%=session['id']%>" method="get">
+          <input type="submit" value="Select">
+        </form>
         </td>
       <% end %>
       </tr>

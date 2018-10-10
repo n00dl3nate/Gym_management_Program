@@ -29,3 +29,12 @@ post '/timetables/:id/delete' do
   Timetable.delete(id)
   redirect to("/timetables")
 end
+
+get '/timetables/:id' do
+  id = params[:id].to_i
+  @timetable = Timetable.find(id)
+  @members = Timetable.attendance(id)
+  s_id = @timetable.session_id
+  @session = Session.find(s_id)
+  erb(:"timetables/show")
+end

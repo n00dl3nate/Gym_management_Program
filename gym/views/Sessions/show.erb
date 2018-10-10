@@ -1,0 +1,13 @@
+<p>Member <%= @session.id %><hr></p>
+<h3> Member Details </h3>
+<p>First Name: <%= @session.f_name %> </p>
+<p>Last Name: <%= @session.l_name %> </p>
+<p>Premium: <%= @session.premium%> </p>
+<p>Fitness Level: <%= @session.fitness_level %> </p>
+<hr>
+<form action="/sessions/<%= @session.id %>/delete" method="post">
+    <input class="interact interact-delete" type="submit" value="Delete">
+</form>
+<form action="/sessions/<%= @session.id %>/update" method="post">
+    <input class="interact" type="submit" value="Edit">
+</form>

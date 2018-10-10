@@ -4,12 +4,9 @@
 <h1></h1>
 <h1>Members</h1>
 
-
-
-
-
-<div class = "members">
-    <a class"members" href="/members/new"><li>Add Member</li></a>
+    <form action="/members/new" method="get">
+        <input type="submit" value="ADD NEW MEMBER">
+    </form>
 <table>
   <tr>
     <th>First Name</th>
@@ -25,7 +22,11 @@
       <td><%= member.l_name %></td>
       <td><%= member.premium %></td>
       <td><%= member.fitness_level %></td>
-      <td><a href="/members/<%= member.id %>" class="view">View</a></td>
+      <td>
+      <form action="/members/<%= member.id %>" method="get">
+        <input type="submit" value="Select">
+      </form>
+      </td>
     </tr>
   <% end %>
 </table>

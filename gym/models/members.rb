@@ -117,4 +117,17 @@ class Member
     return all
   end
 
+  # def self.search_by_name(search)
+  #
+  #   sql = "Select members.* from members
+  #   WHERE f_name LIKE '%  %'"
+  #
+  #
+  #   all = SqlRunner.run(sql)
+  #
+  #   return all.map do |member|
+  #     Member.new(member)
+  #   end
+  # end
+
 end
