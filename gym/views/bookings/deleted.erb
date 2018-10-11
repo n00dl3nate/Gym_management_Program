@@ -1,0 +1,18 @@
+<h1> Your Booking was deleted </h1>
+
+
+<h3> <%= @member.f_name %> <%= @member.l_name %> booking has been removed from the <%= @session.name %> at <%= @timetable.session_time %> </h3>
+
+<hr>
+
+<h3>Click The Link Below To Go To <%= @session.name %> View Page</h3>
+
+<form action="/timetables/<%=@timetable.id%>" method="get">
+      <input type="submit" value="Timetable View">
+</form>
+
+<h3>Click The Link Below To Go To <%= @member.f_name %> <%= @member.l_name %> View Page </h3>
+
+<form action="/members/<%= @member.id %>" method="get">
+  <input type="submit" value="Member View ">
+</form>

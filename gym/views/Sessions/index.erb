@@ -1,4 +1,4 @@
-<h1> All Gym Sessions </h1>
+<h1> Classes </h1>
 
 <form action="/sessions/new" method="get">
     <input type="submit" value="ADD NEW CLASS">
@@ -14,6 +14,7 @@
 
 
   </tr>
+
     <% for session in @sessions%>
     <tr>
       <td><%= session.name %></td>
@@ -25,12 +26,19 @@
       <%level = "High" %>
       <%end %>
       <td><%= level %></td>
-
       <%  premium = 'No'          %>
       <% if session.premium == 't' %>
       <%   premium = 'Yes'        %>
       <%end  %>
       <td> <%= premium %></td>
+
+      <td>
+      <form action="/sessions/<%= session.id %>" method="get">
+        <input type="submit" value="Select">
+      </form>
+      </td>
+
     </tr>
+
     <% end %>
 </table>

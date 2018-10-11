@@ -8,7 +8,6 @@
       <th>Name</th>
       <th>Time</th>
       <th>Spaces Left</th>
-      <th>Delete</th>
       <th>Select</th>
     </tr>
       <% for session in @timetables%>
@@ -16,11 +15,6 @@
         <td><%= session['name'] %></td>
         <td><%= session['session_time'] %></td>
         <td><%= session['capacity'] %> </td>
-        <td>
-          <form action="/timetables/<%= session['id'] %>/delete" method="post">
-            <input class="interact interact-delete" type="submit" value="Delete">
-          </form>
-        </td>
         <td>
         <form action="/timetables/<%=session['id']%>" method="get">
           <input type="submit" value="Select">

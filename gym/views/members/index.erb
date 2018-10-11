@@ -4,11 +4,12 @@
 <h1></h1>
 <h1>Members</h1>
 
-    <form action="/members/new" method="get">
-        <input type="submit" value="ADD NEW MEMBER">
-    </form>
+<form action="/members/new" method="get">
+  <input type="submit" value="ADD NEW MEMBER">
+</form>
 <table>
   <tr>
+
     <th>First Name</th>
     <th>Last Name</th>
     <th>Premium</th>
@@ -18,6 +19,7 @@
   </tr>
     <% for member in @members%>
     <tr>
+
       <td><%= member.f_name %></td>
       <td><%= member.l_name %></td>
       <%  premium = 'No'          %>
@@ -38,6 +40,7 @@
         <input type="submit" value="Select">
       </form>
       </td>
+
     </tr>
   <% end %>
 </table>

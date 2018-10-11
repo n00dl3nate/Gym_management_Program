@@ -65,7 +65,7 @@ class Session
 
   def self.times(id)
 
-    sql = "SELECT timetables.session_time FROM sessions
+    sql = "SELECT timetables.* FROM sessions
     INNER JOIN timetables
     ON timetables.session_id = sessions.id
     WHERE sessions.id = $1
@@ -89,6 +89,15 @@ class Session
     session = SqlRunner.run(sql,[id])
 
     return Session.new(session.first)
+
+  end
+
+  def delete()
+
+    sql = "DELETE FROM sessions
+    WHERE id = $1"
+
+    SqlRunner.run(sql,[@id])
 
   end
 

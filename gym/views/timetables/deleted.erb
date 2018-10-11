@@ -1,0 +1,17 @@
+<h1> Your Timetable Listing Has Been Deleted </h1>
+
+<h3> <%= @session.name  %> at <%= @timetable.session_time %> Has Been Removed From The Timetable</h3>
+
+<hr>
+
+<h3>Click The Link Below To Go To <%= @session.name %> View Page</h3>
+
+<form action="/sessions/<%= @session.id %>" method="get">
+  <input type="submit" value="Session View">
+</form>
+
+<h3>Click The Link Below To Go View The Remaining Class Times</h3>
+
+<form action="/timetables" method="get">
+  <input type="submit" value="Timetables Listing's Page">
+</form>

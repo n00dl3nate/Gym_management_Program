@@ -6,12 +6,50 @@
 <p>Class Time: <%= @timetable.session_time %> </p>
 <p>Spaces Left: <%= @timetable.capacity %> </p>
 <hr>
-<h1>Members Booked For This Class<h1>
+
+<form action="/timetables/<%= @timetable.id %>/delete" method="post">
+  <input class="interact interact-delete" type="submit" value="Delete">
+</form>
+
+<form action="/timetables/<%= @timetable.id %>/update" method="post">
+    <input class="interact" type="submit" value="Edit">
+</form>
+
+
+<h1>Members Booked For This Class</h1>
+
     <table>
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Fitness Level</th>
+        <th>Premium</th>
         <th>Delete</th>
       </tr>
+
+      <% for member in @members%>
+    <tr>
+      <td><%= member['f_name'] %></td>
+      <td><%= member['l_name'] %> </td>
+      <%level = "Low" %>
+      <%if member['fitness_level'] == 2 %>
+      <%level = "Medium" %>
+      <%end %>
+      <%if member['fitness_level'] == 3 %>
+      <%level = "High" %>
+      <%end %>
+      <td><%= level %></td>
+      <%  premium = 'No'          %>
+      <% if member['premium'] == 't' %>
+      <%   premium = 'Yes'        %>
+      <%end  %>
+      <td> <%= premium %></td>
+
+      <td>
+        <form action="/bookings/<%=member['booking_id'] %>/delete" method="post">
+            <input class="interact interact-delete" type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+      <%end  %>
     </table>

@@ -3,7 +3,7 @@ require_relative( '../db/sql_runner' )
 class Timetable
 
   attr_reader :id , :session_id
-  attr_accessor :session_time , :capacity
+  attr_accessor :session_time , :capacity , :f_name 
 
   def initialize(options)
     @id = options['id'].to_i

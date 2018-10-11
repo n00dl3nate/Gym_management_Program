@@ -1,0 +1,21 @@
+
+<h1> Updating Class On Timetable </h1>
+
+<form class="" action="/timetables/<%= @timetable.id %>/change" method="POST">
+
+  Select a Class
+      <select name="session_id" value="">
+        <% for session in @sessions %>
+        <option value="<%= session.id %>"><%= session.name %></option>
+        <% end %>
+      </select>
+    </label>
+
+  <label for = "session_time">Time</label>
+    <input required id="session_time" type="time" name="session_time" Value="<%= @timetable.session_time %>"/>
+
+  <label for = "capacity">capacity</label>
+  <input type="number" name="capacity" placeholder="capacity" min="1" max="30" value="<%= @timetable.capacity %>"/>
+
+  <input type="submit" value="Update">
+</form>

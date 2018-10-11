@@ -1,8 +1,7 @@
 <p>Member <%= @session.id %><hr></p>
-<h3> Member Details </h3>
-<p>First Name: <%= @session.f_name %> </p>
-<p>Last Name: <%= @session.l_name %> </p>
-<p>Premium: <%= @session.premium%> </p>
+<h3> Session Details </h3>
+<p>First Name: <%= @session.name %> </p>
+<p>Last Name: <%= @session.premium%> </p>
 <p>Fitness Level: <%= @session.fitness_level %> </p>
 <hr>
 <form action="/sessions/<%= @session.id %>/delete" method="post">
@@ -11,3 +10,32 @@
 <form action="/sessions/<%= @session.id %>/update" method="post">
     <input class="interact" type="submit" value="Edit">
 </form>
+
+<hr>
+
+<h3>Times And Capacity For <%= @session.name %></h3>
+  <table>
+    <tr>
+
+      <th>Time</th>
+      <th>Capacity</th>
+      <th>Delete</th>
+
+
+    </tr>
+      <% for timetable in @timetables%>
+    <tr>
+
+      <td><%= timetable['session_time'] %></td>
+      <td><%= timetable['capacity'] %></td>
+      <td>
+      <form action="/timetables/<%= timetable['id'] %>/delete" method="post">
+          <input class="interact interact-delete" type="submit" value="Delete">
+      </form>
+      </td>
+
+
+
+    </tr>
+      <%end%>
+      </form>

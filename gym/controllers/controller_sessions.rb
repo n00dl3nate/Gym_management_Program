@@ -25,5 +25,13 @@ get '/sessions/:id' do
   id = params[:id].to_i
   @session = Session.find(id)
   @bookings = Member.show_bookings(params[:id].to_i)
+  @timetables = Session.times(id)
   erb(:"sessions/show")
+end
+
+post '/sessions/:id/delete' do
+  id = params[:id].to_i
+  session = Session.find(id)
+  session.delete()
+  redirect to("/sessions")
 end

@@ -28,7 +28,15 @@
     <tr>
       <td><%= booking['name'] %></td>
       <td><%= booking['session_time'] %></td>
-      <td><%= booking['fitness_level'] %></td>
+      <%level = "Low" %>
+      <%if booking['fitness_level'] == 2 %>
+      <%level = "Medium" %>
+      <%end %>
+      <%if booking['fitness_level'] == 3 %>
+      <%level = "High" %>
+      <%end %>
+      <td><%= level %></td>
+      
       <td>
       <form action="/bookings/<%=booking['id'] %>/delete" method="post">
           <input class="interact interact-delete" type="submit" value="Delete">

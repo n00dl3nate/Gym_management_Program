@@ -11,10 +11,13 @@
     <th>Spaces Left</th>
     <th></th>
   </tr>
+  
+    <%booked_times = [] %>
+    <%@bookings.each {|booking| booked_times << booking['session_time']}%>
+
     <% for session in @timetables%>
       <% if @member.premium == session['premium'] || session['premium'] == 'f'%>
-
-
+        <% if session['capacity'].to_i > 0  && !booked_times.include?(session['session_time'])%>
       <tr>
 
       <td><%= session['name'] %></td>
@@ -25,8 +28,10 @@
           <input class="interact interact-delete" type="submit" value="Add">
       </form></td>
 
+          <% end %>
         <% end %>
       <% end %>
+
 
     </tr>
 
