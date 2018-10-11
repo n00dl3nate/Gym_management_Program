@@ -1,4 +1,4 @@
-<form class="" action="/sessions" method="POST">
+<form class="" action="/sessions/<%= @session.id %>/change" method="POST">
 
   <label for = "name">Class Name</label>
     <input required id="name" type="text" name="name" placeholder="Class Name"/>
@@ -16,6 +16,6 @@
         <option value="false">No</option>
       </select>
 
-  <input type="submit" value="Add">
+  <input type="submit" value="Update">
 
 </form>

@@ -1,7 +1,7 @@
 <p>Member <%= @session.id %><hr></p>
 <h3> Session Details </h3>
-<p>First Name: <%= @session.name %> </p>
-<p>Last Name: <%= @session.premium%> </p>
+<p>Name: <%= @session.name %> </p>
+<p>Premium: <%= @session.premium%> </p>
 <p>Fitness Level: <%= @session.fitness_level %> </p>
 <hr>
 <form action="/sessions/<%= @session.id %>/delete" method="post">

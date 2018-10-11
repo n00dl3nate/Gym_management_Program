@@ -31,7 +31,7 @@ post '/timetables/:id/delete' do
   id = params[:id].to_i
 
   @timetable = Timetable.find(id)
-  
+
   session_id = @timetable.session_id.to_i
   @session = Session.find(session_id)
 
@@ -61,5 +61,5 @@ post '/timetables/:id/change' do
   updated_timetable = Timetable.new(params)
   update_member.update()
   @timetable = Timetable.all
-  erb("/timetables")
+  redirect to("/timetables")
 end

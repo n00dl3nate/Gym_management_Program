@@ -9,7 +9,7 @@ body {
 	margin: 0px;
 	padding: 0px;
   background-color: grey;
-	background-image: url("/Images/backgrounds/gym2.jpg"); 
+	background-image: url("/Images/backgrounds/gym2.jpg");
 	font-family: 'Raleway', sans-serif;
 	font-size: 11pt;
 	font-weight: 400;
@@ -42,11 +42,7 @@ header nav a {
   float: left;
 }
 
-header div {
-  padding: 0.5em;
-  background: dodgerblue;
-  image-orientation: left
-}
+
 
 
 .topnav a:link, a:visited {

@@ -35,3 +35,16 @@ post '/sessions/:id/delete' do
   session.delete()
   redirect to("/sessions")
 end
+
+post '/sessions/:id/update' do
+  id = params[:id].to_i
+  @session = Session.find(id)
+  erb(:"sessions/update")
+end
+
+post '/sessions/:id/change' do
+  updated_session = Session.new(params)
+  updated_session.update()
+  @session = Session.all
+  redirect to('/sessions')
+end

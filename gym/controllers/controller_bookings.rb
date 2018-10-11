@@ -34,9 +34,9 @@ post ('/bookings/:id/delete') do
    @timetable = Timetable.find(timetable_id)
    @member    = Member.find(member_id)
 
-   session_id = @timetable.session_id
+   session_id = @timetable.session_id.to_i
 
-   @session   = Session.find(session_id)
+   @session = Session.find(session_id)
 
   Booking.delete_find(id)
   erb(:"bookings/deleted")
@@ -44,15 +44,22 @@ post ('/bookings/:id/delete') do
 end
 
 post ('/bookings/:id/:timetable_id') do
-  id = params[:id]
+
+  member_id = params[:id]
   timetable_id = params[:timetable_id]
+
+  @member = Member.find(member_id)
+  @timetable = Timetable.find(timetable_id)
+
+  session_id = @timetable.session_id.to_i
+  @session = Session.find(session_id)
+
   booking_new = Booking.new(
-    "member_id" => id,
+    "member_id" => member_id,
     "timetable_id" => timetable_id
   )
-
   Timetable.subtract(timetable_id)
-  
+
   booking_new.save
   erb(:"bookings/created")
 end

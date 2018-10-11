@@ -1,32 +1,8 @@
 <h1> search <h1>
 
-  <!DOCTYPE html>
-  <html>
-  <head>
-  <style>
-  input[type=text] {
-      width: 100%;
-      box-sizing: border-box;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
-      background-color: white;
-      background-image: url('searchicon.png');
-      background-position: 10px 10px;
-      background-repeat: no-repeat;
-      padding: 12px 20px 12px 40px;
-  }
-  </style>
-  </head>
-  <body>
+  <label for = "first-name">First Name</lable>
+    <input required id="first-name" type="text" name="f_name" placeholder="First Name"/>
 
-  <p>Name Search For Member </p>
-    <form action="/members/search/name" method="get">
-    <input type="text" name='name' placeholder="ENTER THE NAME">
-  </form>
-
-  </body>
-  </html>
   <table>
     <tr>
       <th>First Name</th>

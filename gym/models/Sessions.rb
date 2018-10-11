@@ -30,11 +30,12 @@ class Session
   end
 
   def update()
-    sql = "UPDATE members
+    sql = "UPDATE sessions
     SET
     (
       name,
-      fitness_level
+      fitness_level,
+      premium
     ) =
     (
       $1, $2 , $3

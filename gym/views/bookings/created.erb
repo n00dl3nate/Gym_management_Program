@@ -1,1 +1,23 @@
-<h1> Your Booking Was Created <h1> 
+<h1> Your Booking Was Created <h1>
+
+<h3> <%= @member.f_name %> <%= @member.l_name %> Has Been Booked In For <%=@session.name%> At <%= @timetable.session_time %></h3>
+<hr>
+
+<h3>Click The Link Below To Add More Bookings for <%= @member.f_name %> <%= @member.l_name %> </h3>
+
+<form action="/members/<%= @member.id %>/new_booking" method="get">
+    <input type="submit" value="Add Another Booking">
+</form>
+
+<h3>Click The Link Below To View More Information About <%= @session.name %>
+
+<form action="/sessions/<%= @session.id %>" method="get">
+  <input type="submit" value="View Session Information">
+</form>
+
+
+<h3>Click The Link Below To View Who Else Has Been Booked In For <%= @session.name %> At <%= @timetable.session_time %></h3>
+
+<form action="/timetables/<%=@timetable.id %>" method="get">
+  <input type="submit" value="View Timetable Information">
+</form>
